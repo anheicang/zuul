@@ -1,0 +1,20 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.49.1:8761/eureka/
+
+server:
+  port: 8769
+spring:
+  application:
+    name: service-zuul
+
+#http://localhost:8769/user/user/getUser/shuxujie
+zuul:
+  routes:
+     user:
+         path: /user/**
+         serviceId: service-user-ribbon
+     messages:
+         path: /messages/**
+         serviceId: service-messages-ribbon
